@@ -46,10 +46,15 @@ export const SearchInput = styled.input`
   color: ${colors.text};
   background: ${colors.surface};
   width: 220px;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 
   &:focus {
     border-color: ${colors.primary};
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.12);
+  }
+
+  @media (max-width: 480px) {
+    width: 160px;
   }
 `
 

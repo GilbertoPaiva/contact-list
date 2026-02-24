@@ -4,16 +4,23 @@ import { colors } from '../../styles'
 export const Card = styled.li`
   background: ${colors.surface};
   border-radius: 14px;
-  padding: 20px 24px;
+  padding: 18px 20px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1.5px solid transparent;
   display: flex;
   align-items: center;
   gap: 16px;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: box-shadow 0.22s, transform 0.22s, border-color 0.22s;
 
   &:hover {
-    box-shadow: 0 6px 20px rgba(67, 97, 238, 0.12);
+    box-shadow: 0 6px 20px rgba(67, 97, 238, 0.13);
     transform: translateY(-2px);
+    border-color: rgba(67, 97, 238, 0.18);
+  }
+
+  @media (max-width: 480px) {
+    padding: 14px 16px;
+    gap: 12px;
   }
 `
 
@@ -46,15 +53,24 @@ export const ContactName = styled.h3`
   text-overflow: ellipsis;
 `
 
-export const ContactDetail = styled.p`
+export const ContactDetail = styled.div`
   font-size: 0.85rem;
   color: ${colors.textMuted};
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
 
   span {
-    margin-right: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media (min-width: 540px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px 16px;
   }
 `
 

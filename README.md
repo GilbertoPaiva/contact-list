@@ -1,33 +1,127 @@
-# Getting Started with Create React App
+# 📋 Contact List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicação web para gerenciamento de contatos, construída com React, TypeScript e Redux Toolkit. Permite adicionar, editar, remover e buscar contatos com validação em tempo real e proteção contra duplicatas.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## ✨ Funcionalidades
 
-### `npm start`
+- **Adicionar contato** com nome, e-mail e telefone
+- **Editar contato** existente diretamente pelo card
+- **Remover contato** com confirmação
+- **Busca em tempo real** por nome, e-mail ou telefone
+- **Máscara automática** no campo de telefone (formato brasileiro)
+- **Bloqueio de letras** no campo de telefone
+- **Validação de e-mail** enquanto o usuário digita
+- **Proteção contra duplicatas** — e-mails e telefones já cadastrados são rejeitados
+- **Mensagens de erro inline** abaixo de cada campo (sem `alert()`)
+- **Banner de sucesso** ao adicionar um novo contato
+- **Estado visual por campo**: borda vermelha (erro) / verde (válido) / padrão
+- Layout **responsivo** para desktop, tablet e mobile
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🛠 Tecnologias
 
-### `npm test`
+| Tecnologia | Versão | Uso |
+|---|---|---|
+| [React](https://react.dev/) | 19 | Biblioteca de UI |
+| [TypeScript](https://www.typescriptlang.org/) | 4.9 | Tipagem estática |
+| [Redux Toolkit](https://redux-toolkit.js.org/) | 2.x | Gerenciamento de estado |
+| [React Redux](https://react-redux.js.org/) | 9.x | Integração React + Redux |
+| [styled-components](https://styled-components.com/) | 6.x | Estilização com CSS-in-JS |
+| [uuid](https://github.com/uuidjs/uuid) | 13.x | Geração de IDs únicos |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🗂 Estrutura de Pastas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+src/
+├── components/
+│   ├── ContactCard/      # Card individual de um contato
+│   ├── ContactForm/      # Formulário de criação e edição
+│   ├── ContactList/      # Lista de contatos com busca
+│   └── Header/           # Cabeçalho da aplicação
+├── pages/
+│   └── Home/             # Página principal
+├── store/
+│   ├── index.ts          # Configuração do Redux store
+│   └── reducers/
+│       └── contacts.ts   # Slice de contatos (add, edit, remove)
+├── utils/
+│   └── validators.ts     # Máscara de telefone e validações
+├── App.tsx
+└── styles.ts             # Estilos globais e paleta de cores
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚀 Como executar
+
+### Pré-requisitos
+
+- [Node.js](https://nodejs.org/) 16+
+- npm ou yarn
+
+### Instalação
+
+```bash
+# Clone o repositório
+git clone https://github.com/GilbertoPaiva/contact-list.git
+cd contact-list
+
+# Instale as dependências
+npm install
+```
+
+### Desenvolvimento
+
+```bash
+npm start
+```
+
+Abre automaticamente em [http://localhost:3000](http://localhost:3000).  
+O servidor reinicia a cada alteração salva.
+
+### Build de produção
+
+```bash
+npm run build
+```
+
+Gera os arquivos otimizados na pasta `build/`.
+
+### Testes
+
+```bash
+npm test
+```
+
+---
+
+## 📱 Validações implementadas
+
+### Telefone
+- Aceita apenas dígitos durante a digitação (letras são bloqueadas)
+- Máscara aplicada em tempo real: `(XX) XXXX-XXXX` (fixo) ou `(XX) XXXXX-XXXX` (celular)
+- Número considerado válido com 10 ou 11 dígitos
+- Celular de 11 dígitos deve ter `9` como terceiro dígito
+
+### E-mail
+- Validação de formato em tempo real após o campo receber e perder foco
+- Formato esperado: `usuario@dominio.extensao`
+
+### Duplicatas
+- Ao tentar salvar, o sistema verifica se já existe outro contato com o mesmo e-mail ou telefone
+- Na edição, o próprio contato é excluído da verificação
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
+
 
 ### `npm run eject`
 

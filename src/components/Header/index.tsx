@@ -1,11 +1,14 @@
-import { HeaderWrapper, HeaderContent, HeaderTitle, HeaderIcon } from './styles'
+import { HeaderWrapper, HeaderContent, HeaderTitle, HeaderIcon, HeaderSubtitle } from './styles'
 
 const Header = () => {
   return (
     <HeaderWrapper>
       <HeaderContent>
         <HeaderIcon>📋</HeaderIcon>
-        <HeaderTitle>Lista de Contatos</HeaderTitle>
+        <div>
+          <HeaderTitle>Lista de Contatos</HeaderTitle>
+          <HeaderSubtitle>Gerencie seus contatos com facilidade</HeaderSubtitle>
+        </div>
       </HeaderContent>
     </HeaderWrapper>
   )

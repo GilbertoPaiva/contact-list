@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Contact } from '../../store/reducers/contacts'
 import ContactForm from '../../components/ContactForm'
 import ContactList from '../../components/ContactList'
-import { HomeWrapper, PageSubtitle } from './styles'
+import { HomeWrapper } from './styles'
 
 const Home = () => {
   const [contactToEdit, setContactToEdit] = useState<Contact | null>(null)
@@ -18,7 +18,6 @@ const Home = () => {
 
   return (
     <HomeWrapper>
-      <PageSubtitle>Gerencie seus contatos de forma simples e rápida.</PageSubtitle>
       <ContactForm contactToEdit={contactToEdit} onCancelEdit={handleCancelEdit} />
       <ContactList onEdit={handleEdit} />
     </HomeWrapper>

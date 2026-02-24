@@ -32,7 +32,7 @@ export const FormGrid = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 16px;
-  align-items: end;
+  align-items: start;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -53,19 +53,31 @@ export const Label = styled.label`
   letter-spacing: 0.5px;
 `
 
-export const Input = styled.input`
+export const Input = styled.input<{ $status?: 'error' | 'success' | 'default' }>`
   height: 44px;
   padding: 0 14px;
-  border: 2px solid ${colors.border};
+  border: 2px solid
+    ${({ $status }) =>
+      $status === 'error'
+        ? colors.danger
+        : $status === 'success'
+        ? colors.success
+        : colors.border};
   border-radius: 10px;
   font-size: 0.95rem;
   color: ${colors.text};
   background: ${colors.background};
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  width: 100%;
 
   &:focus {
-    border-color: ${colors.primary};
-    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+    border-color: ${({ $status }) =>
+      $status === 'error' ? colors.danger : colors.primary};
+    box-shadow: 0 0 0 3px
+      ${({ $status }) =>
+        $status === 'error'
+          ? 'rgba(230, 57, 70, 0.15)'
+          : 'rgba(67, 97, 238, 0.15)'};
     background: ${colors.surface};
   }
 
@@ -74,10 +86,32 @@ export const Input = styled.input`
   }
 `
 
+export const ErrorText = styled.span`
+  font-size: 0.78rem;
+  color: ${colors.danger};
+  min-height: 20px;
+  display: block;
+  padding-top: 2px;
+`
+
+export const SuccessBanner = styled.div`
+  background: rgba(46, 196, 182, 0.12);
+  border: 1.5px solid ${colors.success};
+  color: ${colors.success};
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`
+
 export const ButtonsRow = styled.div`
   display: flex;
   gap: 10px;
-  margin-top: 20px;
+  padding-top: 4px;
 
   @media (min-width: 769px) {
     grid-column: 1 / -1;
